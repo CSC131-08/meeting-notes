@@ -1,0 +1,1383 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>9-10 Class Notes — Overwatch</title>
+    <style>
+      :root {
+        --green: #043927;
+        --gold: #c4b581;
+        --ink: #1a1a1a;
+        --muted: #6b6b6b;
+        --rule: #e6e6e6;
+        color-scheme: light;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #ffffff;
+        color: var(--ink);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+          sans-serif;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      a {
+        color: var(--green);
+      }
+      a:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 2px;
+      }
+      .wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0;
+        color: var(--green);
+      }
+      h1 {
+        font-size: 2.4rem;
+        letter-spacing: -0.01em;
+      }
+      h2 {
+        font-size: 1.5rem;
+        padding-top: 8px;
+      }
+      h3 {
+        font-size: 1.05rem;
+        color: var(--ink);
+        margin: 36px 0 8px;
+      }
+      p {
+        margin: 0 0 12px;
+      }
+      .label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      header {
+        padding: 48px 0 24px;
+        border-bottom: 3px solid var(--gold);
+      }
+      header .course {
+        color: var(--muted);
+        margin: 6px 0 0;
+      }
+      .team {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px 24px;
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid var(--rule);
+      }
+      .team div {
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+      .team b {
+        display: block;
+        font-weight: 600;
+      }
+      .team span {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .team .lead b::after {
+        content: "Lead";
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--green);
+        background: #f1eddc;
+        padding: 1px 6px;
+        border-radius: 2px;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+      @media (max-width: 600px) {
+        .team {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      section {
+        padding: 40px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      section:last-of-type {
+        border-bottom: 0;
+      }
+      section h2 {
+        margin-bottom: 6px;
+      }
+      section > .sub {
+        color: var(--muted);
+        margin-bottom: 20px;
+      }
+
+      ul {
+        margin: 0 0 12px;
+        padding-left: 1.2rem;
+      }
+      li {
+        margin-bottom: 8px;
+      }
+      li::marker {
+        color: var(--gold);
+      }
+
+      .facts {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .facts li {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--rule);
+        margin: 0;
+      }
+      .facts li:last-child {
+        border-bottom: 0;
+      }
+      .facts b {
+        font-weight: 600;
+        color: var(--green);
+      }
+
+      .qa {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .qa:last-child {
+        border-bottom: 0;
+      }
+      .qa .who {
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+      .qa .who b {
+        color: var(--green);
+        font-weight: 600;
+      }
+      .qa .q {
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      .qa .a {
+        margin: 0;
+      }
+      .qa .a b {
+        font-weight: 600;
+      }
+      .qa .a + .a {
+        margin-top: 8px;
+      }
+
+      .chat {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .chat li {
+        display: grid;
+        grid-template-columns: 72px 64px 1fr;
+        gap: 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        margin: 0;
+        font-size: 0.95rem;
+      }
+      .chat li:last-child {
+        border-bottom: 0;
+      }
+      .chat .t {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      .chat .n {
+        font-weight: 600;
+        color: var(--green);
+      }
+      @media (max-width: 600px) {
+        .chat li {
+          grid-template-columns: 72px 1fr;
+        }
+        .chat .n {
+          display: none;
+        }
+      }
+
+      dl {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 6px 20px;
+        margin: 0;
+      }
+      dt {
+        font-weight: 600;
+      }
+      dd {
+        margin: 0;
+      }
+      @media (max-width: 600px) {
+        dl {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        dd {
+          margin-bottom: 10px;
+        }
+      }
+
+      footer {
+        padding: 28px 0 48px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="label">Team</div>
+        <h1>Overwatch</h1>
+        <p class="course">
+          CSC 131 Computer Software Engineering, Section 8. Sacramento State,
+          Fall 2026. Instructor Ahmed Salem.
+        </p>
+        <div class="team">
+          <div class="lead">
+            <b>Josh Lemos</b><span>Project manager</span><br /><span
+              >joshualemos@csus.edu</span
+            >
+          </div>
+          <div>
+            <b>Mohd Mahmodi</b><span>Tech lead, infrastructure</span><br /><span
+              >mohdmahmodi@csus.edu</span
+            >
+          </div>
+          <div>
+            <b>Connor McKelvey</b><span>Frontend</span><br /><span
+              >cmckelvey@csus.edu</span
+            >
+          </div>
+          <div>
+            <b>Ali Farooq</b><span>Backend / Integration</span><br /><span
+              >alifarooq@csus.edu</span
+            >
+          </div>
+          <div>
+            <b>Ryan Sharma</b><span>Backend Logic</span><br /><span
+              >rsharma3@csus.edu</span
+            >
+          </div>
+          <div>
+            <b>Parker Luu</b><span>Frontend (UI/UX)</span><br /><span>pluu@csus.edu</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section>
+        <div class="label">9-10 Class Notes</div>
+        <h2>Client lecture — September 10, 2026, 12:00 PM</h2>
+        <p class="sub">
+          Zoom session with the Sac State Office of Energy and Sustainability.
+          Laura Gonzalez manages the campus waste hauling account and answered
+          most questions. Ryan Todd, Director of Energy and Sustainability,
+          joined about 30 minutes late. Josh Maddox from Sac State also joined.
+        </p>
+
+        <h3>The project</h3>
+        <p>
+          From the professor's email: Develop a waste collection survey and
+          dashboard using Smartsheet. The system will allow drivers to document
+          each pickup by submitting a photograph, bin fullness level, date,
+          time, location, and driver information. The dashboard will organize
+          and visualize the data to identify collection patterns, improve pickup
+          schedules, reduce unnecessary trips, and make waste hauling more
+          efficient. Students can use platforms such as Zabble as a model.
+        </p>
+
+
+        <h3>About the client office (Laura intro)</h3>
+        <ul class="facts">
+          <li>
+            <b>Laura Gonzalez</b> is Waste and Sustainability Analyst at the
+            Office of Sustainability (facilities / operations side, not teaching).
+          </li>
+          <li>
+            Small team: about 3 full-time staff, 2 recyclers, plus interns,
+            volunteers, and College Corps Fellows. Ambitious goals, limited budget.
+          </li>
+          <li>
+            Campus is about 300 acres with 60+ buildings.
+          </li>
+          <li>
+            <b>Zero waste by 2030</b> (presidential goal from 2018): divert 90%+
+            of waste from landfill.
+          </li>
+          <li>
+            <b>Carbon neutral by 2040</b> (about 5 years ahead of California).
+          </li>
+          <li>
+            Must follow state, CSU Chancellor Office, and some federal rules.
+            <b>SB 1383</b> drives organic waste / compost collection, color-coded
+            bins and signage, rising recovery targets since 2022, and edible-food
+            recovery work with cafeterias.
+          </li>
+          <li>
+            Commercial inspiration is Zabble (too expensive). CSUN students built a
+            Smartsheet + dashboard version that inspired this project.
+          </li>
+        </ul>
+
+        <h3>What the client told us</h3>
+        <ul class="facts">
+          <li>
+            <b>The biggest problem is no data.</b> Laura cannot tell whether a
+            driver showed up, whether the bin was full, or how much was taken.
+            Nobody checks the bins after pickup.
+          </li>
+          <li>
+            <b>The most important field is fullness at the time of service,</b>
+            captured before the bin is emptied.
+          </li>
+          <li>
+            <b>The users are the sustainability team, mostly Laura.</b> Drivers
+            only fill out the survey. Custodians are not users.
+          </li>
+          <li>
+            <b>Two fees per stop.</b> A fee for the truck to come to campus plus
+            a weight fee. An empty bin still costs the visit fee.
+          </li>
+          <li>
+            <b>Target is service at about 80% full.</b> Below that wastes fees.
+            Overflowing bins are refused by the driver and need a paid return
+            trip.
+          </li>
+          <li>
+            <b>Around 100 dumpsters</b> across roughly 57 to 63 buildings. Each
+            building has at least one bin per waste stream: landfill, recycling,
+            organics. Sequoia Hall has 4 landfill, 3 recycling, and 4 organics
+            carts. The University Union has the most.
+          </li>
+          <li>
+            <b
+              >Most academic buildings are serviced Monday, Wednesday,
+              Friday.</b
+            >
+            Other buildings have their own schedules. No weekend service.
+          </li>
+          <li>
+            <b>Bins already have hauler names.</b> Example: Modoc Hall shares a
+            compactor with Napa Hall, coded roughly as Napa Modoc Compactor. We
+            use their names from the master list.
+          </li>
+          <li>
+            <b>Container types vary.</b> Regular dumpsters, compactors at the
+            library, and organics carts. The library compactors come back a
+            quarter full every two weeks and are still paid for.
+          </li>
+          <li>
+            <b>Truck scales have been broken for years.</b> The hauler sends
+            estimates. The public Power BI dashboard shows the same tonnage for
+            most buildings every month.
+          </li>
+          <li>
+            <b>Drivers already carry iPads</b> and log visits in their company
+            system. The company told Laura they are fine using a better system
+            if she has one.
+          </li>
+          <li>
+            <b>One survey for the whole class.</b> Laura agreed it would be
+            better if drivers only fill out one form.
+          </li>
+          <li>
+            <b>Smartsheet is suggested, not required.</b> It works offline and
+            the CSU already has a membership. Laura said twice she is not tied
+            to it.
+          </li>
+          <li>
+            <b>The survey keeps running after the class ends.</b> The dashboard
+            is the tool to visualize it.
+          </li>
+          <li>
+            <b>The hauling contract is going to bid</b> for a new five year
+            term. Real service data would help the negotiation.
+          </li>
+          <li>
+            <b>Color coded liners.</b> Recycling bags should be blue. A clear or
+            green bag in recycling is contamination. Laura wants an AI check on
+            photos eventually.
+          </li>
+          <li>
+            <b>Known trouble spot.</b> The athletic center always has extra
+            waste in, around, and next to the dumpsters, even after more service
+            and bigger bins.
+          </li>
+          <li>
+            <b>On-call service is separate.</b> Big projects like the theater
+            department's spring cleanout get a dumpster serviced only on
+            requested dates.
+          </li>
+          <li>
+            <b>Reporting.</b> The department reports annually to the State of
+            California and the CSU system and has zero waste goals.
+          </li>
+          <li>
+            <b>Laura will send:</b> the master dumpster list with locations,
+            map, and codes; the master service schedule; invoices from August
+            and September onward; the survey template from the other campus; and
+            access to survey responses for the teams.
+          </li>
+          <li>
+            <b>Missed pickup alerts.</b> When asked if she would want them,
+            Laura said that would be amazing.
+          </li>
+        </ul>
+
+        <h3>Contact</h3>
+        <dl>
+          <dt>Email</dt>
+          <dd>
+            <a
+              href="mailto:sustainability@csus.edu?subject=CSC%20131%20Overwatch"
+              >sustainability@csus.edu</a
+            >. Put CSC 131 in the subject line. Laura disconnected her phone
+            because of complaint calls, so email is the fastest way to reach
+            her.
+          </dd>
+          <dt>In person</dt>
+          <dd>
+            Email to schedule about a week ahead. Their office is in Modoc Hall.
+            Dropping in is unlikely to work.
+          </dd>
+          <dt>Website</dt>
+          <dd>
+            <a
+              href="https://www.csus.edu/experience/innovation-creativity/sustainability/"
+              >csus.edu sustainability</a
+            >
+          </dd>
+          <dt>Public dashboard</dt>
+          <dd>
+            <a
+              href="https://app.powerbi.com/view?r=eyJrIjoiNTNlZDc5MmUtZDFiZC00MzFmLTg5NDYtNTdlNmI0ZjA0YzZlIiwidCI6ImI2YjQ5MDAxLThiM2YtNDNmYS05OWExLTcwNmU4YzdlMzU5OCIsImMiOjZ9&amp;pageName=ReportSection"
+              >Power BI report</a
+            >
+          </dd>
+          <dt>CSUN example</dt>
+          <dd>
+            <a href="https://csun-zero-waste.replit.app/"
+              >csun-zero-waste.replit.app</a
+            >. A dashboard hosted on Replit that reads live Smartsheet data.
+          </dd>
+        </dl>
+      </section>
+
+      <section>
+        <div class="label">In order</div>
+        <h2>Questions and answers</h2>
+        <p class="sub">
+          Every question asked during the meeting and how the client answered.
+          Grouped by topic.
+        </p>
+
+        <h3>Survey questions and timing</h3>
+        <div class="qa">
+          <div class="who">12:18 PM, <b>Ahmed Salem</b></div>
+          <p class="q">
+            Would you like to see what the teams come up with for survey
+            questions?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Yes. Start with the basics: day, time, location, and
+            fullness based on a picture. If you have other suggestions, now is
+            the time to add them.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:18 PM, <b>Ahmed Salem</b></div>
+          <p class="q">How soon do you need the survey back?</p>
+          <p class="a">
+            <b>Laura:</b> As soon as we get it. The sooner, the easier it is for
+            you to have data to work with.
+          </p>
+        </div>
+
+        <h3>Dumpster locations, sensors, and naming</h3>
+        <div class="qa">
+          <div class="who">12:19 PM, <b>Kyle</b></div>
+          <p class="q">
+            Will we know the dumpster locations? Will there be sensors, or do
+            students or drivers check fullness?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Either way. If you want your own route I can provide
+            the locations. I have a master list and a map. No sensors right now.
+            We are exploring them but they are very expensive. Drivers are
+            easier because they already do weekly routes. You are welcome to
+            collect your own.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:20 PM, <b>Kyle</b></div>
+          <p class="q">
+            Do drivers visit in a set order, or could we compute the best order?
+          </p>
+          <p class="a">
+            <b>Laura:</b> I have a master schedule. I believe they go every day.
+            But I have no data proving they follow the route. That is part of
+            the problem: making sure service matches the contract and every
+            location is taken care of.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:20 PM, <b>Nick Salamy</b></div>
+          <p class="q">Can you share the list of dumpster locations?</p>
+          <p class="a"><b>Laura:</b> Yes.</p>
+        </div>
+        <div class="qa">
+          <div class="who">12:20 PM, <b>Raji Sahansra</b></div>
+          <p class="q">
+            Is there a naming convention drivers recognize, or do we make our
+            own?
+          </p>
+          <p class="a">
+            <b>Laura:</b> They already have names. Modoc Hall has a recycling
+            dumpster, a compost cart, and shares a compactor with Napa Hall. The
+            driver code is something like Napa Modoc Compactor for trash. The
+            master list has the location and name for every building.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:26 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">Do you have the exact number of dumpsters on campus?</p>
+          <p class="a">
+            <b>Laura:</b> It is in the master service list I will provide. Not
+            off the top of my head.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:39 PM, <b>Kyle</b></div>
+          <p class="q">Ballpark, hundreds or thousands of bins?</p>
+          <p class="a">
+            <b>Laura:</b> Around 100. About 57 to 63 buildings depending on
+            which you count. Each has at least three bins, one per waste stream.
+            Some larger buildings have several per stream.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:00 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            How far are the dumpsters from each other? What is the max per
+            building?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Almost every building has its own. A few share, like
+            Lassen Hall and Kadema Hall, with enclosures between the buildings.
+            The University Union has the most and they are very large. On the
+            academic side Sequoia Hall is largest with 4 landfill, 3 recycling,
+            and 4 organics carts.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:00 PM, <b>Nick Salamy</b></div>
+          <p class="q">Is all of that in the master sheet?</p>
+          <p class="a">
+            <b>Laura:</b> Yes. I will also check with the hauler so my list
+            matches theirs and give you the most current version.
+          </p>
+        </div>
+
+        <h3>Cost, how the hauler is paid, and the contract</h3>
+        <div class="qa">
+          <div class="who">12:21 PM, <b>Brian Peart</b></div>
+          <p class="q">
+            Will you give us cost data per visit, or do we research it?
+          </p>
+          <p class="a">
+            <b>Laura:</b> I have the invoices and manage the account. I can
+            provide what is paid, for example August and September. If the
+            project starts at the end of September we can compare later in the
+            semester and see how changes affect cost.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:24 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            Are collectors paid by the hour, or by whether they collect?
+          </p>
+          <p class="a">
+            <b>Laura:</b> By service and by fullness, meaning weight. We pay a
+            fee just for them to come to campus, then a weight fee on top. Empty
+            or a quarter full, we still pay the visit fee.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:24 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            So they check every bin, you do not know if it is full, and you
+            still pay?
+          </p>
+          <p class="a"><b>Laura:</b> Yes, that is it.</p>
+        </div>
+        <div class="qa">
+          <div class="who">12:30 PM, <b>Jared</b></div>
+          <p class="q">Do you have a target number for savings?</p>
+          <p class="a">
+            <b>Laura:</b> No. We are going into a bid process to renew the
+            service contract, so actual cost versus what we pay will be very
+            beneficial. The new contract runs five years.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:45 PM, <b>Joshua Risley</b></div>
+          <p class="q">
+            Do the invoices already say how much waste is in each bin?
+          </p>
+          <p class="a">
+            <b>Laura:</b> No. The trucks used to have scales and I had exact
+            weights. The scales have not worked for years, so I get estimates
+            and use them for our public dashboard. It is obvious it is not real
+            data because most buildings show the same amount every month.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:47 PM, <b>Jared</b></div>
+          <p class="q">
+            Is there a maximum time before a bin must be dumped even if not
+            full?
+          </p>
+          <p class="a">
+            <b>Laura:</b> No maximum. It is most efficient at about 80% full.
+            Overflowing, the driver will not take it because things can fly out
+            while lifting. Below, we still pay service and weight fees. At 80%
+            it is the same every time.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:57 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            Would it cost less to hire more custodians or rely on drivers?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Two different accounts. Custodians are campus
+            employees with many other tasks. Their staffing does not change how
+            full a dumpster gets. That depends on the building's occupants and
+            whether drivers come on time. The campus pays the hauler to take
+            waste to recycling, compost, or landfill. This project is about the
+            hauler contract, not custodial hiring.
+          </p>
+        </div>
+
+        <h3>Smartsheet and how data reaches us</h3>
+        <div class="qa">
+          <div class="who">12:23 PM, <b>Brian Peart</b></div>
+          <p class="q">
+            You mentioned a specific website we had to use. Slipstream?
+          </p>
+          <p class="a">
+            <b>Laura:</b> No. I showed an example another group built at a
+            different CSU. They use Smartsheet because it takes submissions
+            without Wi-Fi or cell service, which is easier for the driver. I am
+            not limiting you to it. It inspired this project. The CSU system has
+            a Smartsheet membership, so it is cost friendly for students.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:29 PM, <b>Brian Peart</b></div>
+          <p class="q">
+            So we write the questions, use the offline tool you showed, and that
+            is cost effective?
+          </p>
+          <p class="a"><b>Laura:</b> Correct.</p>
+        </div>
+        <div class="qa">
+          <div class="who">12:29 PM, <b>Brian Peart</b></div>
+          <p class="q">
+            Does the data go to you first, or do we get it immediately?
+          </p>
+          <p class="a">
+            <b>Laura:</b> We can discuss. I think we can add the teams as data
+            users so you have access immediately instead of going through me. I
+            need to check how many people the survey tool allows to view
+            responses.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:40 PM, <b>Alexander Hartigan</b></div>
+          <p class="q">
+            Are all teams sharing the same survey data, or does each collect its
+            own?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Up to you. One survey for the whole class, or your own
+            resources like photographing dumpsters yourselves.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:40 PM, <b>Alexander Hartigan</b></div>
+          <p class="q">
+            If a driver had to take three surveys from different teams, that
+            would get annoying.
+          </p>
+          <p class="a">
+            <b>Laura:</b> Yes. It would be beneficial if it is just one.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:42 PM, <b>Alexander Hartigan</b></div>
+          <p class="q">With one survey, is the data real time?</p>
+          <p class="a">
+            <b>Laura:</b> Ideally you have access as it comes in. We can create
+            the survey so everyone gets the data. That is why I am asking for
+            the questions you want for the first sprint, so we can put it
+            together and start collecting.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:08 PM, <b>Austin Young</b></div>
+          <p class="q">
+            If the class uses one universal survey, is each team's job analysis
+            and visualization rather than collection?
+          </p>
+          <p class="a">
+            <b>Ryan Todd:</b> Yes. If the core survey is the same, the data is
+            the same. How you present it is what changes.
+          </p>
+          <p class="a">
+            <b>Laura:</b> That can be a solution, but I do not want to limit the
+            class. If you want to build new software with intake and results in
+            one platform, that is up to you. That would be a different tool for
+            the future.
+          </p>
+          <p class="a">
+            <b>Ryan Todd:</b> Look at the end goal, not how you get there. We
+            have a problem to solve and a potential solution, but that does not
+            mean it is the way you have to do it, as long as the end product
+            meets the need.
+          </p>
+        </div>
+
+        <h3>What goes in the survey</h3>
+        <div class="qa">
+          <div class="who">12:24 PM, <b>Nick Salamy</b></div>
+          <p class="q">
+            We are looking at the big dumpsters a truck picks up, not small
+            receptacles?
+          </p>
+          <p class="a"><b>Laura:</b> Yes.</p>
+        </div>
+        <div class="qa">
+          <div class="who">12:25 PM, <b>Nick Salamy</b></div>
+          <p class="q">
+            So drivers update pictures or a template showing fullness on a daily
+            or route basis?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Yes. A survey with date, time, maybe a picture of
+            fullness, some questions, and we use that data for the dashboard.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:26 PM, <b>Sam Yohanes</b></div>
+          <p class="q">What are the non-negotiables for the data?</p>
+          <p class="a">
+            <b>Laura:</b> Any data is better than nothing, which is what we
+            have. We are very open and I want you to use your creativity. The
+            most critical thing is fullness at service, so we can adjust service
+            and save cost.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:38 PM, <b>Erika H</b></div>
+          <p class="q">
+            Does the survey cover past semesters or just this fall?
+          </p>
+          <p class="a">
+            <b>Laura:</b> The survey should keep being used independently of the
+            project. The point of this project is a tool to visualize that data,
+            past this fall.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:45 PM, <b>Jarim</b></div>
+          <p class="q">
+            Should the survey capture the bin before or after emptying?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Before, so we know how full it is. The company sends a
+            separate volume based report. With before data we can compare and
+            check it is similar.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:55 PM, <b>Nick Salamy</b></div>
+          <p class="q">
+            How do we make sure the driver fills it out every time?
+          </p>
+          <p class="a">
+            <b>Laura:</b> I already talked to the company. They said they are
+            fine giving that information, so if we have a better system we can
+            ask them to use it. They already carry iPads. It will not affect
+            what they are doing.
+          </p>
+        </div>
+
+        <h3>Project flow and Sprint 1</h3>
+        <div class="qa">
+          <div class="who">12:27 PM, <b>Brian Peart</b></div>
+          <p class="q">
+            Create a survey for the drivers, collect for two weeks, then build
+            from the data. Is that right?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Yes. Two weeks, a month, or as long as you need for
+            enough data.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:27 PM, <b>Joshua Lemos</b></div>
+          <p class="q">
+            What needs to work for Sprint 1 to be a success on September 24?
+          </p>
+          <p class="a">
+            <b>Laura:</b> If we get the survey done by then, with the questions
+            you want to see. That is the most important and critical part so we
+            can start collecting as soon as possible.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:28 PM, <b>Ahmed Salem</b></div>
+          <p class="q">Is the survey already drafted?</p>
+          <p class="a">
+            <b>Laura:</b> I have a version from a different campus we can use,
+            and we are open to adding questions. I requested access this morning
+            and do not have it yet, so I cannot share it on screen.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:29 PM, <b>Ahmed Salem</b></div>
+          <p class="q">
+            Once the survey goes out, when do responses come back?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Drivers are on campus every day, so immediately once
+            they have access.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:02 PM, <b>Brian Peart</b></div>
+          <p class="q">
+            Sprint 1 is the survey, and the whole class works on one survey?
+          </p>
+          <p class="a">
+            <b>Ahmed Salem:</b> Each team holds its own sprint planning session
+            and decides its tasks. Sprint 1 is two weeks, today through
+            September 24. I do not assign tasks. The team is self organized,
+            self disciplined, and cross functional. The survey could be one item
+            in the sprint, not the whole two weeks. At the end each team demos
+            with the clients present, gets feedback, holds a retrospective on
+            attendance, participation, task allocation, and the work, then plans
+            Sprint 2.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:05 PM, <b>Brian Peart</b></div>
+          <p class="q">
+            So you want more than the survey in Sprint 1, even though we need
+            the data first? Programming, or designing?
+          </p>
+          <p class="a">
+            <b>Ahmed Salem:</b> That is how industry works. The team lead
+            decides what is reasonable for two weeks. The survey alone may not
+            fill it. We only have until about December 9. Each team has five to
+            seven people. Coding is up to you, but definitely design, and maybe
+            some coding. Sprint 1 is not the end. You will see what other teams
+            did and can pivot in Sprint 2.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:16 PM, <b>Brian Peart</b></div>
+          <p class="q">
+            The Deliverable 1 link only asks for names and emails, but the doc
+            asks for a cover page. Which do we submit?
+          </p>
+          <p class="a">
+            <b>Ahmed Salem:</b> The full report with the cover page. The
+            placeholder in the link was a misunderstanding and the TA will
+            correct it.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:20 PM, <b>Aqila Nasiry</b></div>
+          <p class="q">Is the team selection deliverable due tonight?</p>
+          <p class="a"><b>Ahmed Salem:</b> Yes, tonight by midnight.</p>
+        </div>
+
+        <h3>Users, purpose, and scope</h3>
+        <div class="qa">
+          <div class="who">12:35 PM, <b>Parker</b></div>
+          <p class="q">
+            Are we making a financial tool to optimize how much money goes into
+            this?
+          </p>
+          <p class="a">
+            <b>Laura:</b> We are trying to be more efficient. Efficiency leads
+            to cost savings, hopefully.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:35 PM, <b>Parker</b></div>
+          <p class="q">
+            Who are the users? You and your team, or someone else?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Our team, mostly me, to track what happens on campus.
+            It could also be a partnership with the hauler to make sure they do
+            what the contract says. Showing up to an empty bin wastes their time
+            too. Beyond savings, it helps us understand what is happening and
+            decide. If recycling or compost bins are always full, we increase
+            their size. We want landfill numbers to go down. We have zero waste
+            and compliance goals and report annually to the State of California,
+            the CSU system, and two other entities.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:37 PM, <b>Parker</b></div>
+          <p class="q">
+            Can the scope go beyond a financial tool? Can we do more?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Yes. I have a second project idea: AI waste
+            contamination detection. When the driver takes the picture, detect
+            contamination by material or by liner color. All bags in a recycling
+            dumpster should be blue. A clear or green bag is contamination. That
+            helps us train custodians and keep the streams clean.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:31 PM, <b>George Tsetsegmaa</b></div>
+          <p class="q">
+            Are we hard set on surveys, or can we try cameras with vision?
+          </p>
+          <p class="a">
+            <b>Laura:</b> I would love that. Not hard set. I was going for a
+            simple version, but sensors or cameras are welcome.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:23 PM, <b>Sam Yohanes</b></div>
+          <p class="q">What is the biggest problem right now?</p>
+          <p class="a">
+            <b>Laura:</b> We do not have any data showing the services on
+            campus. It is very hard to make decisions and changes without
+            knowing what is going on.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:23 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            So the first priority is the data, then we expand into missed
+            pickups, scheduling, and savings?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Yes. And later maybe a contamination tool with AI or
+            another approach. Keep expanding a software based product that shows
+            what the company is doing and where the campus disposes its waste.
+          </p>
+        </div>
+
+        <h3>Current service, missed pickups, and complaints</h3>
+        <div class="qa">
+          <div class="who">12:32 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            Is one main issue not knowing whether drivers pick up the right or
+            full ones?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Right now I cannot say whether the library dumpster
+            serviced today was full. We still get charged. I do not know if they
+            showed up, if the route was completed, or how much was taken.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:33 PM, <b>Aqila Nasiry</b></div>
+          <p class="q">
+            If dumpsters are not full, do you want drivers to skip them?
+          </p>
+          <p class="a">
+            <b>Laura:</b> They still go, but if a bin is consistently not full,
+            instead of every other day they can come once a week and save money.
+            Yes, we would pay less.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:33 PM, <b>Stein Clinten</b></div>
+          <p class="q">How many days a week do they come now?</p>
+          <p class="a">
+            <b>Laura:</b> Most academic buildings three times a week: Monday,
+            Wednesday, Friday. Other buildings have different schedules. The
+            library has compactors, so it should need less service, but the data
+            says it is a quarter full every time and we pay every two weeks when
+            it could be once a month. I will share the master schedule with
+            every building's days and times.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:43 PM, <b>Sam Yohanes and Parker</b></div>
+          <p class="q">Are there more complaints in certain areas?</p>
+          <p class="a">
+            <b>Laura:</b> Yes. The athletic center always has extra waste
+            inside, around, and next to the dumpsters. We increased service and
+            dumpster size and still have the same issue. Data could prove
+            whether it is user error and training is needed, custodian error, or
+            the company not servicing as much as we think. That is one building.
+            There is always something happening on campus.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:41 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            Is there an intermediate step from small trash cans to dumpsters,
+            and do you pay for that?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Yes. Another class is working on the small trash cans,
+            so we will have both. Everything from the small cans ends up in the
+            dumpsters.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:48 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            What happens when a bin is overflowing and the driver refuses it?
+          </p>
+          <p class="a">
+            <b>Laura:</b> One of our two campus recyclers takes material out so
+            the driver can pick it up, or uses heavy equipment to push the load
+            down. If the driver left it, we pay for them to come back.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:49 PM, <b>Sam Yohanes</b></div>
+          <p class="q">
+            If a bin is full and you get complaints, what do you prioritize?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Depends on the complaint. Waste always smells.
+            Unserviced food waste gets an extra service immediately for safety.
+            Regular dumpsters are serviced three times a week, so a Tuesday call
+            is emptied Wednesday. A Friday night call waits until Monday because
+            the hauler does not work weekends. This is why the dashboard
+            matters: I could see the last pickup was Monday when they were
+            supposed to come Wednesday, and push back when they try to charge
+            me.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:51 PM, <b>Nick Salamy</b></div>
+          <p class="q">
+            Would you like alerts on the dashboard when a pickup is missed?
+          </p>
+          <p class="a"><b>Laura:</b> Oh yes, that would be amazing.</p>
+        </div>
+        <div class="qa">
+          <div class="who">12:51 PM, <b>Joshua Risley</b></div>
+          <p class="q">
+            How flexible is the schedule? Early pickups when near full, or
+            canceled when empty?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Yes. Academic buildings and offices have regular
+            schedules that can change in summer and breaks, though some
+            buildings still hold summer classes. There is also on-call service
+            for large projects. The theater department gets an on-call dumpster
+            every spring and it is serviced only on the dates needed.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:59 PM, <b>Sam Yohanes</b></div>
+          <p class="q">Is anyone checking that bins were actually emptied?</p>
+          <p class="a">
+            <b>Laura:</b> No. I sometimes drive around and take pictures so I
+            can call the company, but nobody checks daily. That would waste
+            labor when sensors, cameras, or just knowing the services could tell
+            us.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:00 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            When an issue comes up, do you contact drivers directly or the
+            company?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Both. Drivers and the company call me all day, and I
+            call our account manager or customer service. But I am not on campus
+            24 hours. A 3 AM pickup issue waits until I wake up.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:19 PM, <b>Sam Yohanes</b></div>
+          <p class="q">How do you account for missed bins today?</p>
+          <p class="a">
+            <b>Laura:</b> We do not. I drive around, the recyclers on their
+            route call me, campus customers call Facilities Management and
+            requests reach me, and custodians report when something has been
+            overflowing for more than three days. Eventually it reaches me and I
+            call the company. There is no efficient way to track daily.
+          </p>
+        </div>
+
+        <h3>Custodians</h3>
+        <div class="qa">
+          <div class="who">12:53 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            Could the people who move trash from small cans to dumpsters report
+            when the big one is full?
+          </p>
+          <p class="a">
+            <b>Laura:</b> Honest answer: very large campus, not enough
+            custodians, especially the last year and a half. Three shifts,
+            campus split into zones, different groups on different days, always
+            rushing. That is why drivers are the easier source. They already log
+            visits in their company's system, which I do not receive.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">12:56 PM, <b>Alexander Hartigan</b></div>
+          <p class="q">
+            Could custodians send an alert only when a dumpster is around 75%
+            full?
+          </p>
+          <p class="a">
+            <b>Laura:</b> We can try to work with the leads and ask the director
+            in charge if his team will do a trial. They do floors, bathrooms,
+            and everything else, not just trash. I will take that note. That is
+            a realistic goal.
+          </p>
+        </div>
+
+        <h3>Budget, sensors, and cameras</h3>
+        <div class="qa">
+          <div class="who">1:12 PM, <b>Kyle</b></div>
+          <p class="q">
+            Is there any budget? Sensors are expensive but worth it long term.
+          </p>
+          <p class="a">
+            <b>Laura:</b> We will absolutely look at that, especially if savings
+            cover the cost. Without consulting my team: if you want a pilot,
+            there is a student sustainability fund on the Sac State
+            Sustainability website under the student involvement tab. It is
+            small, so not 100 sensors, but maybe one to test. You apply, we
+            interview the team, then decide. Fill out the form and meet with us
+            before buying anything. We cannot reimburse. We can only purchase
+            for you.
+          </p>
+          <p class="a">
+            <b>Ryan Todd:</b> If the final solution needs a sensor on every bin,
+            use common sense. $10,000 per sensor will not work. Around $50
+            might. A purchase is not out of the question for this project.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:21 PM, <b>Zainab Mahyar</b></div>
+          <p class="q">
+            Could we use existing campus cameras to watch the dumpsters?
+          </p>
+          <p class="a">
+            <b>Ryan Todd:</b> No. Those are police and campus security cameras.
+            Completely different use case, they would not alter them, and our
+            team has no clearance to access them. It would be a waste of time to
+            ask.
+          </p>
+        </div>
+
+        <h3>Reaching the client</h3>
+        <div class="qa">
+          <div class="who">12:48 PM, <b>Mohd Mahmodi</b></div>
+          <p class="q">
+            Can you share the link to the waste dashboard in the chat?
+          </p>
+          <p class="a">
+            <b>Laura:</b> It is public on the sustainability website and someone
+            already shared it. I cannot share it right now.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:17 PM, <b>Yousef Khalaf</b></div>
+          <p class="q">How do we contact Laura with questions?</p>
+          <p class="a">
+            <b>Laura:</b> I added the email to the chat. Put the class in the
+            subject line so I can respond as soon as possible. There is a lot of
+            information on the website too.
+          </p>
+        </div>
+        <div class="qa">
+          <div class="who">1:18 PM, <b>Joshua Lemos</b></div>
+          <p class="q">Is email the fastest contact, or can we call?</p>
+          <p class="a">
+            <b>Laura:</b> I disconnected my phone because of complaints, so
+            email is fastest. For in person, I can send times. I am on campus
+            all week, and someone else on the team can help if I am not.
+          </p>
+          <p class="a">
+            <b>Ryan Todd:</b> We can meet, but we are not always in the office.
+            We need about a week to get it on the schedule. Showing up at Modoc
+            Hall unannounced probably will not work. Email to coordinate and we
+            can give availability for one to three of us.
+          </p>
+        </div>
+      </section>
+
+
+      <section>
+        <div class="label">After students left</div>
+        <h2>Professor + client follow-up</h2>
+        <p class="sub">
+          Short conversation after class between Ahmed Salem, Laura Gonzalez,
+          Ryan Todd, and Josh Maddox.
+        </p>
+        <ul class="facts">
+          <li>
+            Students keep asking for the &quot;bare minimum.&quot; Salem asked
+            clients to expand the project description into clearer
+            <b>features / functions / requirements</b> (even beyond what teams
+            can fully finish), then narrow across sprints.
+          </li>
+          <li>
+            Purpose: reduce confusion, create a scoring/rubric basis, and hold
+            teams accountable to client needs.
+          </li>
+          <li>
+            Ryan agreed this helps compare teams on functions. Target: get the
+            expanded list to the professor by <b>Monday</b> (before Tuesday
+            class), ideally for both related projects.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="label">During the call</div>
+        <h2>Discord notes</h2>
+        <p class="sub">
+          What the team wrote in the server while the meeting was running.
+        </p>
+        <ul class="chat">
+          <li>
+            <span class="t">12:11 PM</span><span class="n">Connor</span
+            ><span>Posted an image of the example the client showed.</span>
+          </li>
+          <li>
+            <span class="t">12:18 PM</span><span class="n">Josh</span
+            ><span
+              >Suggestion: survey creation for the data input by trash drivers.
+              The group has no sensors.</span
+            >
+          </li>
+          <li>
+            <span class="t">12:20 PM</span><span class="n">Connor</span
+            ><span
+              >Data is reported by drivers on dumpster runs, goes to the
+              sustainability department, then to us for processing and display.
+              If we have survey question ideas, give them to the client.</span
+            >
+          </li>
+          <li>
+            <span class="t">12:23 PM</span><span class="n">Josh</span
+            ><span>Laura can provide campus invoices.</span>
+          </li>
+          <li>
+            <span class="t">12:27 PM</span><span class="n">Connor</span
+            ><span
+              >Main goal is reducing driver costs. Drivers are paid even for
+              mostly empty dumpsters. Sending them to bins that are frequently
+              full is more cost efficient, and our data can calculate
+              that.</span
+            >
+          </li>
+          <li>
+            <span class="t">12:28 PM</span><span class="n">Connor</span
+            ><span
+              >Surveys may go directly to us through Smartsheet so we use the
+              data directly.</span
+            >
+          </li>
+          <li>
+            <span class="t">12:28 PM</span><span class="n">Josh</span
+            ><span
+              >Collectors are paid by service and fullness. There is still a fee
+              for visiting an empty bin. Most important: fullness at each
+              location and its implications. The survey is the basic first
+              requirement of Sprint 1 and should be collected continuously. No
+              route info is presented during visits. The library has compactors
+              so bins are less full there.</span
+            >
+          </li>
+          <li>
+            <span class="t">12:36 PM</span><span class="n">Josh</span
+            ><span
+              >The sustainability team is the user, not the drivers. Optional
+              second feature: AI that scans trash photos for
+              contamination.</span
+            >
+          </li>
+          <li>
+            <span class="t">12:48 PM</span><span class="n">Josh</span
+            ><span
+              >80% fullness means schedule a pickup. Posted the Power BI link.
+              Notification for the sustainability team when a pickup is missed.
+              On-call dumpster service is separate.</span
+            >
+          </li>
+          <li>
+            <span class="t">12:49 PM</span><span class="n">Mohd</span
+            ><span>Posted the Power BI link.</span>
+          </li>
+          <li>
+            <span class="t">1:00 PM</span><span class="n">Josh</span
+            ><span
+              >Currently no person or technology checks the trash after
+              pickup.</span
+            >
+          </li>
+          <li>
+            <span class="t">1:18 PM</span><span class="n">Connor</span
+            ><span
+              >Client contact is sustainability@csus.edu. Put the class in the
+              subject line. Schedule in person meetings about a week ahead.
+              Drop-ins are unlikely to work. Posted the CSUN Waste Hauling
+              Dashboard link.</span
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      Team Overwatch. 9-10 class notes from the September 10, 2026 client lecture + Q&amp;A.
+    </footer>
+  </body>
+</html>
